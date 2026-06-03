@@ -1,0 +1,11 @@
+id,name,address,district,phone,website,rating,reviewsCount,priceRange
+1,Beauty House Warszawa,"ul. Marszałkowska 12, Warszawa",Śródmieście,+48221234567,https://beautyhouse.pl,4.8,321,$$$
+2,Studio Urody Bella,"ul. Puławska 45, Warszawa",Mokotów,+48222345678,https://bellastudio.pl,4.6,214,$$
+3,Glamour Salon,"ul. Grójecka 88, Warszawa",Ochota,+48223456789,https://glamour.pl,4.7,187,$$$
+4,Hair & Beauty Expert,"ul. Górczewska 10, Warszawa",Wola,+48224567890,https://hairbeauty.pl,4.5,145,$$
+5,Perfect Look,"ul. Targowa 20, Warszawa",Praga-Północ,+48225678901,https://perfectlook.pl,4.9,432,$$$$
+6,Salon Venus,"ul. Modlińska 55, Warszawa",Białołęka,+48226789012,https://venus.pl,4.3,98,$$
+7,Golden Scissors,"ul. Fieldorfa 15, Warszawa",Gocław,+48227890123,https://goldenscissors.pl,4.4,121,$$
+8,Elite Beauty Center,"ul. KEN 100, Warszawa",Ursynów,+48228901234,https://elitebeauty.pl,4.8,277,$$$
+9,Nail & Hair Studio,"ul. Powstańców Śląskich 50, Warszawa",Bemowo,+48229012345,https://nailhair.pl,4.2,76,$
+10,Beauty Zone,"ul. Jana Pawła II 30, Warszawa",Śródmieście,+48220123456,https://beautyzone.pl,4.7,201,$$$

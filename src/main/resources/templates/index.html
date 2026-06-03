@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Warsaw Beauty Salons</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            margin: 40px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        th {
+            background: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Warsaw Beauty Salons</h1>
+
+<p>
+    Total salons:
+    <strong th:text="${#lists.size(salons)}"></strong>
+</p>
+
+<table>
+
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>District</th>
+        <th>Rating</th>
+        <th>Reviews</th>
+        <th>Website</th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+    <tr th:each="salon : ${salons}">
+        <td th:text="${salon.name}"></td>
+        <td th:text="${salon.district}"></td>
+        <td th:text="${salon.rating}"></td>
+        <td th:text="${salon.reviewsCount}"></td>
+
+        <td>
+            <a th:href="${salon.website}"
+               th:text="${salon.website}">
+            </a>
+        </td>
+    </tr>
+
+    </tbody>
+
+</table>
+
+</body>
+</html>
