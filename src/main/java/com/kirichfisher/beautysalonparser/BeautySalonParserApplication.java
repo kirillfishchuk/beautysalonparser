@@ -43,7 +43,6 @@ public class BeautySalonParserApplication {
 
                     String hostAddress = address.getHostAddress();
 
-                    // Skip loopback and IPv6
                     if (address.isLoopbackAddress() || hostAddress.contains(":")) {
                         continue;
                     }

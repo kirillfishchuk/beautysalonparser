@@ -5,7 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository
 
 interface SalonRepository : JpaRepository<Salon, Long> {
 
-    fun findByDistrictContainingIgnoreCase(
-        district: String
-    ): List<Salon>
+    fun existsByNameAndAddress(name: String, address: String): Boolean
 }

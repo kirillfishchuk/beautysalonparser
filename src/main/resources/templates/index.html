@@ -25,29 +25,13 @@
             <strong th:text="${#lists.size(salons)}"></strong>
         </div>
 
-        <input
-                type="text"
-                id="filterName"
-                placeholder="Filter by name..."
-        />
+        <input type="text" id="filterName" placeholder="Filter by name..." />
 
-        <input
-                type="text"
-                id="filterDistrict"
-                placeholder="Filter by district..."
-        />
+        <input type="text" id="filterDistrict" placeholder="Filter by district..." />
 
-        <input
-                type="number"
-                id="filterRating"
-                placeholder="Min rating..."
-        />
+        <input type="number" id="filterRating" placeholder="Min rating..." />
 
-        <input
-                type="text"
-                id="filterPrice"
-                placeholder="Filter by price..."
-        />
+        <input type="text" id="filterPrice" placeholder="Filter by price..." />
 
     </div>
 
@@ -86,10 +70,10 @@
             <td th:text="${salon.address}"></td>
             <td th:text="${salon.phone}"></td>
 
-            <td>
+            <td class="website-cell">
                 <a th:if="${salon.website != null}"
                    th:href="${salon.website}"
-                   th:text="${salon.website}"
+                   th:text="${#strings.abbreviate(salon.website, 30)}"
                    target="_blank"></a>
             </td>
 

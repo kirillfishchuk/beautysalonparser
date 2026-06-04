@@ -1,6 +1,5 @@
 package com.kirichfisher.beautysalonparser.service
 
-import com.kirichfisher.beautysalonparser.dto.SalonUpdateRequest
 import com.kirichfisher.beautysalonparser.entity.Salon
 import com.kirichfisher.beautysalonparser.repository.SalonRepository
 import org.springframework.stereotype.Service
@@ -14,23 +13,23 @@ class SalonService(
         repository.findAll()
 
     fun getById(id: Long): Salon =
-        repository.findById(id)
-            .orElseThrow { RuntimeException("Salon not found") }
+        repository.findById(id).orElseThrow {
+            RuntimeException("Salon not found")
+        }
 
-    fun update(id: Long, req: SalonUpdateRequest): Salon {
+    fun update(id: Long, updated: Salon): Salon {
 
-        val salon = repository.findById(id)
-            .orElseThrow { RuntimeException("Salon not found") }
+        val existing = getById(id)
 
-        salon.name = req.name
-        salon.address = req.address
-        salon.district = req.district
-        salon.phone = req.phone
-        salon.website = req.website
-        salon.rating = req.rating
-        salon.reviewsCount = req.reviewsCount
-        salon.priceRange = req.priceRange
+        existing.name = updated.name
+        existing.address = updated.address
+        existing.district = updated.district
+        existing.phone = updated.phone
+        existing.website = updated.website
+        existing.rating = updated.rating
+        existing.reviewsCount = updated.reviewsCount
+        existing.priceRange = updated.priceRange
 
-        return repository.save(salon)
+        return repository.save(existing)
     }
 }

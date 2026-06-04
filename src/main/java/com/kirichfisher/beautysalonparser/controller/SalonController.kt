@@ -1,26 +1,27 @@
 package com.kirichfisher.beautysalonparser.controller
 
-import com.kirichfisher.beautysalonparser.dto.SalonUpdateRequest
+import com.kirichfisher.beautysalonparser.entity.Salon
 import com.kirichfisher.beautysalonparser.service.SalonService
 import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/salons")
 class SalonController(
-    private val salonService: SalonService
+    private val service: SalonService
 ) {
 
     @GetMapping
-    fun getAll() =
-        salonService.getAll()
+    fun getAll(): List<Salon> =
+        service.getAll()
 
     @GetMapping("/{id}")
-    fun getById(@PathVariable id: Long) =
-        salonService.getById(id)
+    fun getOne(@PathVariable id: Long): Salon =
+        service.getById(id)
 
     @PutMapping("/{id}")
     fun update(
         @PathVariable id: Long,
-        @RequestBody req: SalonUpdateRequest
-    ) = salonService.update(id, req)
+        @RequestBody salon: Salon
+    ): Salon =
+        service.update(id, salon)
 }
