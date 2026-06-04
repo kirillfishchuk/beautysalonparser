@@ -3,66 +3,98 @@
 <head>
     <title>Warsaw Beauty Salons</title>
 
-    <style>
-        body {
-            font-family: Arial;
-            margin: 40px;
-        }
-
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        td, th {
-            border: 1px solid #ddd;
-            padding: 8px;
-        }
-
-        th {
-            background: #f2f2f2;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
-<body>
+<body class="light">
 
-<h1>Warsaw Beauty Salons</h1>
+<div class="container">
 
-<p>
-    Total salons:
-    <strong th:text="${#lists.size(salons)}"></strong>
-</p>
+    <header>
+        <h1>Warsaw Beauty Salons</h1>
 
-<table>
+        <button id="themeToggle">
+            🌙 Dark Mode
+        </button>
+    </header>
 
-    <thead>
-    <tr>
-        <th>Name</th>
-        <th>District</th>
-        <th>Rating</th>
-        <th>Reviews</th>
-        <th>Website</th>
-    </tr>
-    </thead>
+    <div class="toolbar">
 
-    <tbody>
+        <div>
+            Total salons:
+            <strong th:text="${#lists.size(salons)}"></strong>
+        </div>
 
-    <tr th:each="salon : ${salons}">
-        <td th:text="${salon.name}"></td>
-        <td th:text="${salon.district}"></td>
-        <td th:text="${salon.rating}"></td>
-        <td th:text="${salon.reviewsCount}"></td>
+        <input
+                type="text"
+                id="districtFilter"
+                placeholder="Filter by district..."
+        />
 
-        <td>
-            <a th:href="${salon.website}"
-               th:text="${salon.website}">
-            </a>
-        </td>
-    </tr>
+    </div>
 
-    </tbody>
+    <table id="salonsTable">
 
-</table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>District</th>
+            <th>Rating</th>
+            <th>Price Range</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        <tr th:each="salon : ${salons}"
+            class="salon-row"
+
+            th:data-name="${salon.name}"
+            th:data-address="${salon.address}"
+            th:data-district="${salon.district}"
+            th:data-phone="${salon.phone}"
+            th:data-website="${salon.website}"
+            th:data-rating="${salon.rating}"
+            th:data-reviews="${salon.reviewsCount}"
+            th:data-price="${salon.priceRange}">
+
+            <td th:text="${salon.name}"></td>
+            <td th:text="${salon.district}"></td>
+            <td th:text="${salon.rating}"></td>
+            <td th:text="${salon.priceRange}"></td>
+
+        </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<div id="detailsModal" class="modal hidden">
+
+    <div class="modal-content">
+
+        <span class="close">&times;</span>
+
+        <h2 id="modalName"></h2>
+
+        <p><b>Address:</b> <span id="modalAddress"></span></p>
+        <p><b>District:</b> <span id="modalDistrict"></span></p>
+        <p><b>Phone:</b> <span id="modalPhone"></span></p>
+        <p><b>Website:</b> <a id="modalWebsite" target="_blank"></a></p>
+        <p><b>Rating:</b> <span id="modalRating"></span></p>
+        <p><b>Reviews:</b> <span id="modalReviews"></span></p>
+        <p><b>Price Range:</b> <span id="modalPrice"></span></p>
+
+        <button disabled>
+            Edit (coming soon)
+        </button>
+
+    </div>
+
+</div>
+
+<script src="/js/app.js"></script>
 
 </body>
 </html>
