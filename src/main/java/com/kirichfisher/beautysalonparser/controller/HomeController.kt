@@ -1,13 +1,13 @@
 package com.kirichfisher.beautysalonparser.controller
 
-import com.kirichfisher.beautysalonparser.service.SalonCsvService
+import com.kirichfisher.beautysalonparser.service.SalonService
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
 
 @Controller
 class HomeController(
-    private val salonCsvService: SalonCsvService
+    private val salonService: SalonService
 ) {
 
     @GetMapping("/")
@@ -15,7 +15,7 @@ class HomeController(
 
         model.addAttribute(
             "salons",
-            salonCsvService.getAll()
+            salonService.getAll()
         )
 
         return "index"

@@ -5,6 +5,7 @@
 
     <link rel="stylesheet" href="/css/styles.css">
 </head>
+
 <body class="light">
 
 <div class="container">
@@ -26,8 +27,26 @@
 
         <input
                 type="text"
-                id="districtFilter"
+                id="filterName"
+                placeholder="Filter by name..."
+        />
+
+        <input
+                type="text"
+                id="filterDistrict"
                 placeholder="Filter by district..."
+        />
+
+        <input
+                type="number"
+                id="filterRating"
+                placeholder="Min rating..."
+        />
+
+        <input
+                type="text"
+                id="filterPrice"
+                placeholder="Filter by price..."
         />
 
     </div>
@@ -36,10 +55,14 @@
 
         <thead>
         <tr>
-            <th>Name</th>
-            <th>District</th>
-            <th>Rating</th>
-            <th>Price Range</th>
+            <th data-key="name">Name</th>
+            <th data-key="district">District</th>
+            <th data-key="address">Address</th>
+            <th data-key="phone">Phone</th>
+            <th data-key="website">Website</th>
+            <th data-key="rating">Rating</th>
+            <th data-key="reviews">Reviews</th>
+            <th data-key="price">Price Range</th>
         </tr>
         </thead>
 
@@ -48,9 +71,10 @@
         <tr th:each="salon : ${salons}"
             class="salon-row"
 
+            th:data-id="${salon.id}"
             th:data-name="${salon.name}"
-            th:data-address="${salon.address}"
             th:data-district="${salon.district}"
+            th:data-address="${salon.address}"
             th:data-phone="${salon.phone}"
             th:data-website="${salon.website}"
             th:data-rating="${salon.rating}"
@@ -59,7 +83,18 @@
 
             <td th:text="${salon.name}"></td>
             <td th:text="${salon.district}"></td>
+            <td th:text="${salon.address}"></td>
+            <td th:text="${salon.phone}"></td>
+
+            <td>
+                <a th:if="${salon.website != null}"
+                   th:href="${salon.website}"
+                   th:text="${salon.website}"
+                   target="_blank"></a>
+            </td>
+
             <td th:text="${salon.rating}"></td>
+            <td th:text="${salon.reviewsCount}"></td>
             <td th:text="${salon.priceRange}"></td>
 
         </tr>
@@ -86,9 +121,7 @@
         <p><b>Reviews:</b> <span id="modalReviews"></span></p>
         <p><b>Price Range:</b> <span id="modalPrice"></span></p>
 
-        <button disabled>
-            Edit (coming soon)
-        </button>
+        <button disabled>Edit (coming soon)</button>
 
     </div>
 
